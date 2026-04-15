@@ -96,24 +96,80 @@
 
 
 
-<div class="container">
+<div class="container" style="margin-top: 40px;">
     <div class="row">
-        <div class="form_bg">
-          <form action ="Sign_in_Customer" method="post">
-Username : 
-<input type="text" name="uname">
-<br>
-<br>
-<br>
-Password : 
-<input type="password" name="pwd">
-<br>
-<br>
-<br>
-<input type="submit" value="Sign In">
-</form>
+        <div class="col-md-5 col-md-offset-4">
+            <div class="panel panel-info" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <div class="panel-heading" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px 8px 0 0; padding: 20px;">
+                    <h2 class="panel-title" style="color: white; margin: 0; text-align: center;">
+                        🔐 Smart Parking Login
+                    </h2>
+                </div>
+                <div class="panel-body" style="padding: 40px;">
+                    <form action="Sign_in_Customer" method="post" id="loginForm">
+                        <div class="form-group">
+                            <label for="uname" style="color: #333; font-weight: bold; font-size: 14px;">Customer ID / Username</label>
+                            <input type="text" class="form-control" id="uname" name="uname" 
+                                   placeholder="Enter your Customer ID" required 
+                                   style="border-radius: 4px; border: 2px solid #ddd; padding: 12px; font-size: 15px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pwd" style="color: #333; font-weight: bold; font-size: 14px;">Password</label>
+                            <input type="password" class="form-control" id="pwd" name="pwd" 
+                                   placeholder="Enter your password" required 
+                                   style="border-radius: 4px; border: 2px solid #ddd; padding: 12px; font-size: 15px;">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" 
+                                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 4px; margin-top: 20px;">
+                            ✓ Sign In
+                        </button>
+                    </form>
+
+                    <hr style="margin: 25px 0; border: 1px solid #e0e0e0;">
+
+                    <div style="text-align: center;">
+                        <p style="color: #666; margin-bottom: 15px;">Don't have an account?</p>
+                        <a href="Sign_up_customer.html" class="btn btn-success" 
+                           style="background-color: #4CAF50; border: none; padding: 10px 20px; width: 100%; border-radius: 4px; text-decoration: none;">
+                            ➕ Create New Account
+                        </a>
+                    </div>
+
+                    <div style="background-color: #f0f7ff; border-left: 4px solid #667eea; padding: 15px; margin-top: 25px; border-radius: 4px;">
+                        <p style="margin: 5px 0; color: #333; font-size: 13px;">
+                            <strong>📝 Demo Credentials (if available):</strong><br>
+                            Customer ID: 1<br>
+                            Password: password123
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+// Enhanced login form validation
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    var uname = document.getElementById('uname').value.trim();
+    var pwd = document.getElementById('pwd').value;
+
+    if (uname === '') {
+        alert('❌ Please enter your Customer ID');
+        e.preventDefault();
+        return false;
+    }
+
+    if (pwd === '') {
+        alert('❌ Please enter your password');
+        e.preventDefault();
+        return false;
+    }
+
+    return true;
+});
+</script>
 </body>
 </html>

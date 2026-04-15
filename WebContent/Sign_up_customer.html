@@ -93,30 +93,112 @@
 	<!--  End Header Section  -->
 
 
-<div class="container">
+<div class="container" style="margin-top: 40px;">
     <div class="row">
-        <div class="form_bg">
-        
-        
-<form action="Sign_up_cust_servlet" method="post">
-Customer Name : <br>
-<input type="text" name="cust_name">
-<br>
-Vehicle number : <br>
-<input type="text" name="V_number" maxlength="10">
-<br>
-Vehicle Type (0-> Bike 1->Car ) : <br>
-<input type="text" name="V_type" maxlength="1" >
-<br>
-Password : <br>
-<input type="password" name="cust_pwd">
-<br><br>
-<input type="submit" value="Sign up!" >
-<br>
-</form>
-       </div>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <div class="panel-heading" style="background-color: #ff6b35; border-radius: 8px 8px 0 0;">
+                    <h3 class="panel-title">🚗 Create Your Account</h3>
+                </div>
+                <div class="panel-body" style="padding: 30px;">
+                    <form action="Sign_up_cust_servlet" method="post" id="signupForm">
+                        <div class="form-group">
+                            <label for="custName" style="color: #333; font-weight: bold;">Full Name</label>
+                            <input type="text" class="form-control" id="custName" name="cust_name" 
+                                   placeholder="Enter your full name" required 
+                                   style="border-radius: 4px; border: 2px solid #e0e0e0; padding: 10px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vehicleNum" style="color: #333; font-weight: bold;">Vehicle Number</label>
+                            <input type="text" class="form-control" id="vehicleNum" name="V_number" 
+                                   placeholder="e.g., DL-01-AB-1234" maxlength="10" required
+                                   style="border-radius: 4px; border: 2px solid #e0e0e0; padding: 10px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vehicleType" style="color: #333; font-weight: bold;">Vehicle Type</label>
+                            <select class="form-control" id="vehicleType" name="V_type" required
+                                    style="border-radius: 4px; border: 2px solid #e0e0e0; padding: 10px;">
+                                <option value="">-- Select Vehicle Type --</option>
+                                <option value="0">🏍️ Bike (2-Wheeler)</option>
+                                <option value="1">🚗 Car (4-Wheeler)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="custPwd" style="color: #333; font-weight: bold;">Password</label>
+                            <input type="password" class="form-control" id="custPwd" name="cust_pwd" 
+                                   placeholder="Enter a strong password" required 
+                                   style="border-radius: 4px; border: 2px solid #e0e0e0; padding: 10px;">
+                            <small style="color: #666;">Password must be at least 6 characters</small>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 25px;">
+                            <button type="submit" class="btn btn-success btn-block" 
+                                    style="background-color: #4CAF50; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 4px;">
+                                ✓ Create Account
+                            </button>
+                        </div>
+
+                        <div class="text-center" style="margin-top: 20px; border-top: 1px solid #e0e0e0; padding-top: 15px;">
+                            <p style="color: #666; margin: 0;">Already have an account?</p>
+                            <a href="Sign_in_customer.html" style="color: #ff6b35; text-decoration: none; font-weight: bold;">Sign In Here →</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+// Enhanced form validation
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    var custName = document.getElementById('custName').value.trim();
+    var vehicleNum = document.getElementById('vehicleNum').value.trim();
+    var vehicleType = document.getElementById('vehicleType').value;
+    var custPwd = document.getElementById('custPwd').value;
+
+    if (custName === '') {
+        alert('❌ Please enter your full name');
+        e.preventDefault();
+        return false;
+    }
+
+    if (custName.length < 3) {
+        alert('❌ Name must be at least 3 characters long');
+        e.preventDefault();
+        return false;
+    }
+
+    if (vehicleNum === '') {
+        alert('❌ Please enter your vehicle number');
+        e.preventDefault();
+        return false;
+    }
+
+    if (vehicleType === '') {
+        alert('❌ Please select your vehicle type');
+        e.preventDefault();
+        return false;
+    }
+
+    if (custPwd === '') {
+        alert('❌ Please enter a password');
+        e.preventDefault();
+        return false;
+    }
+
+    if (custPwd.length < 6) {
+        alert('❌ Password must be at least 6 characters long');
+        e.preventDefault();
+        return false;
+    }
+
+    return true;
+});
+</script>
 
 
 </body>
